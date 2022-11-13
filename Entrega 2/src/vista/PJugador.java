@@ -10,13 +10,13 @@ import modelo.Participante;
 public class PJugador extends JPanel{
 	
 	private ControladorUsuario controlador;
-	private POpcionesAdmin pOpcionesAdmin;
+	private POpcionesUsuario pOpcionesUsuario;
 	
 	public PJugador(Participante p) {
 		this.controlador = new ControladorUsuario(p);
 		this.setLayout(new BorderLayout());
-		this.pOpcionesAdmin = new POpcionesAdmin();
-		this.add(this.pOpcionesAdmin, BorderLayout.NORTH);
+		this.pOpcionesUsuario= new POpcionesUsuario();
+		this.add(this.pOpcionesUsuario, BorderLayout.NORTH);
 		
 	}	
 }
