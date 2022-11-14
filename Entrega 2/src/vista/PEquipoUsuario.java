@@ -14,14 +14,22 @@ public class PEquipoUsuario extends JPanel{
 		this.setLayout(new GridLayout(4, 3, 10, 30));
 		
 		JPanel pDel = new JPanel(new FlowLayout());
+		JPanel pSDel = new JPanel(new FlowLayout());
 		JPanel pMed = new JPanel(new FlowLayout());
+		JPanel pSMed = new JPanel(new FlowLayout());
 		JPanel pDef = new JPanel(new FlowLayout());
+		JPanel pSDef = new JPanel(new FlowLayout());
 		JPanel pPor = new JPanel(new FlowLayout());
+		JPanel pSPor = new JPanel(new FlowLayout());
 		
 		this.add(pDel);
+		this.add(pSDel);
 		this.add(pMed);
+		this.add(pSMed);
 		this.add(pDef);
+		this.add(pSDef);
 		this.add(pPor);
+		this.add(pSPor);
 		
 		
 		pDel.add(new JLabel("DEL"));
@@ -31,47 +39,49 @@ public class PEquipoUsuario extends JPanel{
 		
 		JButton btnDel1 = new JButton();
 		JButton btnDel2 = new JButton();
-		JButton btnDel3 = new JButton();
-		JButton btnDel4 = new JButton();
-		JButton btnDel5 = new JButton();
+		
+		JButton btnSDel1 = new JButton();
 		
 		JButton btnMed1 = new JButton();
 		JButton btnMed2 = new JButton();
 		JButton btnMed3 = new JButton();
 		JButton btnMed4 = new JButton();
-		JButton btnMed5 = new JButton();
+		
+		JButton btnSMed1 = new JButton();
 		
 		JButton btnDef1 = new JButton();
 		JButton btnDef2 = new JButton();
 		JButton btnDef3 = new JButton();
 		JButton btnDef4 = new JButton();
-		JButton btnDef5 = new JButton();
+		
+		JButton btnSDef1 = new JButton();
 		
 		JButton btnPor1 = new JButton();
-		JButton btnPor2 = new JButton();
-		JButton btnPor3 = new JButton();
+		
+		JButton btnSPor1 = new JButton();
 		
 		pDel.add(btnDel1);
 		pDel.add(btnDel2);
-		pDel.add(btnDel3);
-		pDel.add(btnDel4);
-		pDel.add(btnDel5);
 		
+		pSDel.add(btnSDel1);
+
 		pMed.add(btnMed1);
 		pMed.add(btnMed2);
 		pMed.add(btnMed3);
 		pMed.add(btnMed4);
-		pMed.add(btnMed5);
+		
+		pSMed.add(btnSMed1);
 		
 		pDef.add(btnDef1);
 		pDef.add(btnDef2);
 		pDef.add(btnDef3);
 		pDef.add(btnDef4);
-		pDef.add(btnDef5);
+		
+		pSDef.add(btnSDef1);	
 		
 		pPor.add(btnPor1);
-		pPor.add(btnPor2);
-		pPor.add(btnPor3);
+		
+		pSPor.add(btnSPor1);
 	}
 
 }
