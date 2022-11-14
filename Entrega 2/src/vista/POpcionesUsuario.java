@@ -1,27 +1,33 @@
 package vista;
 
+
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class POpcionesUsuario extends JPanel {
 	
+	private JButton btnCrearEquipo;
+	private JPanel pCompraVenta;
+	private JTextField txtcompraJugador;
+	private JTextField txtventaJugador;
 	
 	public POpcionesUsuario() {
-		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		JButton btnCrearEquipo = new JButton("Crear Equipo");
+		
+		this.setLayout(new FlowLayout());
+		
+		this.btnCrearEquipo = new JButton("Crear Equipo");
 		this.add(btnCrearEquipo);
-		JPanel pCompraVenta = new JPanel();
+		this.pCompraVenta = new JPanel();
 		this.add(pCompraVenta);
 		
-		pCompraVenta.add(new JButton("Comprar"));
-		JTextField txtcompraJugador = new JTextField("           ");
-		pCompraVenta.add(txtcompraJugador);
-		pCompraVenta.add(new JButton("Vender"));
-		JTextField txtventaJugador = new JTextField("            ");
-		pCompraVenta.add(txtventaJugador);
+		this.pCompraVenta.add(new JButton("Comprar"));
+		this.txtcompraJugador = new JTextField("           ");
+		this.pCompraVenta.add(txtcompraJugador);
+		this.pCompraVenta.add(new JButton("Vender"));
+		this.txtventaJugador = new JTextField("            ");
+		this.pCompraVenta.add(txtventaJugador);
 	}
 }
