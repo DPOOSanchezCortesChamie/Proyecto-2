@@ -19,7 +19,7 @@ public class FPrincipal extends JFrame{
 				
 		this.setTitle("Fútbol de Fantasía");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setSize(500,500);
+	    this.setSize(1000,1000);
 	 	this.setLayout(new BorderLayout());
 		this.pIngresoDatos = new PIngresoDatos(this);
 		this.add(this.pIngresoDatos, BorderLayout.CENTER);

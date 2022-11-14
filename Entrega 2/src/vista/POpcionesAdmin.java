@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -13,6 +14,6 @@ public class POpcionesAdmin extends JPanel{
 		JButton btnCrearTemporada = new JButton("Crear Temporada");
 		this.add(btnCrearTemporada);
 
-	}	
+	}
 	
 }
