@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 public class FPrincipal extends JFrame{
 	
 	private PIngresoDatos pIngresoDatos;
+	private PAdmin pAdmin;
+	private PJugador pJugador;
 	
 	public FPrincipal() {
 				
@@ -29,19 +31,25 @@ public class FPrincipal extends JFrame{
 		
 	}
 	public void iniciarUsuario(Participante p) {
-		PJugador pJugador = new PJugador(p);
+		this.pJugador = new PJugador(p, this);
 		this.remove(this.pIngresoDatos);
 		this.add(pJugador, BorderLayout.CENTER);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
 	
 	public void iniciarAdmin(Admin a) {
-		PAdmin pAdmin = new PAdmin(a);
+		this.pAdmin = new PAdmin(a);
 		this.remove(this.pIngresoDatos);
 		this.add(pAdmin, BorderLayout.CENTER);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
-	public void cerrarSesion() {
+	public void cerrarSesionUsuario() {
+		this.remove(this.pJugador);
+		this.add(this.pIngresoDatos, BorderLayout.CENTER);
+		SwingUtilities.updateComponentTreeUI(this);
+	}
+	public void cerrarSesionAdmin() {
+		this.remove(this.pAdmin);
 		this.add(this.pIngresoDatos, BorderLayout.CENTER);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
