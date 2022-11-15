@@ -2,6 +2,7 @@ package vista;
 
 import modelo.Admin;
 import controlador.ControladorAdmin;
+import controlador.ControladorPrincipal;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -19,9 +20,6 @@ import javax.swing.border.TitledBorder;
 
 public class PAdmin extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	ControladorAdmin controlador;
 	
@@ -35,16 +33,15 @@ public class PAdmin extends JPanel{
 		pantelTop.setBorder(new TitledBorder(new EtchedBorder()));
 		
 		
-		String[] catalogo = {"Bazinga", "Renault Megane CC", "Citroen Xsara Picasso"};
+		String[] catalogo = {"1", "2", "3"};
 		JComboBox<String> temporada = new JComboBox<String>(catalogo);
 		pantelTop.add(new JLabel("Temporadas:"));
 		pantelTop.add(temporada);
-		pantelTop.add(new Button("Crear nueva temporada pa"));
+		pantelTop.add(new Button("Crear nueva temporada"));
 		
 		
 		JPanel panelCenter = new JPanel();
 		panelCenter.setLayout(new GridLayout(1,2));
-		panelCenter.setBackground(Color.GRAY);
 		
 		JPanel panelC1 = new JPanel();
 		panelC1.setLayout(new GridLayout(3, 1));
@@ -55,7 +52,7 @@ public class PAdmin extends JPanel{
 		panelC12.add(new JLabel("EXPLORADOR DE TEMPORADA",getY()/2));
 		panelC12.setBorder(new TitledBorder(new EtchedBorder()));
 		
-		String[] datos = {"fiumba", "boliviano", "paraguasho"};
+		String[] datos = {"1", "2", "3"};
 		JComboBox<String> info = new JComboBox<String>(datos);
 		
 		JPanel fecha = new JPanel();
@@ -64,7 +61,7 @@ public class PAdmin extends JPanel{
 		fecha.add(info);
 		panelC12.add(fecha);
 		
-		String[] datos1 = {"fiumba", "boliviano", "paraguasho"};
+		String[] datos1 = {"1", "2", "3"};
 		JComboBox<String> info1 = new JComboBox<String>(datos1);
 		
 		JPanel equipo = new JPanel();
@@ -76,6 +73,12 @@ public class PAdmin extends JPanel{
 		
 		JPanel panelC13 = new JPanel();
 		panelC13.setBorder(new TitledBorder(new EtchedBorder(), "Información Jugador"));
+		panelC13.setLayout(new GridLayout(4,1));
+		panelC13.add(new JLabel("Nombre: "));
+		panelC13.add(new JLabel("Posición"));
+		panelC13.add(new JLabel("Puntos por fecha: "));
+		panelC13.add(new JLabel("Puntos total: "));
+		
 		
 		JPanel panelC14 = new JPanel();
 		panelC14.setBorder(new TitledBorder(new EtchedBorder(), "Datos del Equipo"));
@@ -86,7 +89,11 @@ public class PAdmin extends JPanel{
 		
 		
 		JPanel panelC3 = new JPanel();
-		panelC3.setBorder(new TitledBorder(new EtchedBorder()));
+		panelC3.setLayout(new GridLayout(4,1));
+		panelC3.setBorder(new TitledBorder(new EtchedBorder(), "Datos de la Temporada"));
+		panelC3.add(new JLabel("Numero equipos: "));
+		panelC3.add(new JLabel("Top 3 equipos: "));
+		
 		
 		panelCenter.add(panelC1);
 		panelCenter.add(panelC3);
