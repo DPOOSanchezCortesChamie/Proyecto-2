@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,9 +24,10 @@ public class PAdmin extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	ControladorAdmin controlador;
+	FPrincipal principal;
 	
-	public PAdmin(Admin a) {
-	
+	public PAdmin(Admin a, FPrincipal principal) {
+		this.principal = principal;
 		this.controlador = new ControladorAdmin(a);
 		this.setLayout(new BorderLayout());
 		
@@ -95,11 +98,22 @@ public class PAdmin extends JPanel{
 		panelC3.add(new JLabel("Top 3 equipos: "));
 		
 		
+		
 		panelCenter.add(panelC1);
 		panelCenter.add(panelC3);
 
 		this.add(panelCenter, BorderLayout.CENTER);
 		this.add(pantelTop, BorderLayout.NORTH);
+		
+		JButton cerrarSesion  = new JButton("Cerrar Sesion");
+		this.add(cerrarSesion,BorderLayout.SOUTH);
+		
+		cerrarSesion.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				principal.cerrarSesionAdmin();
+			}
+		});
 		
 		
 		

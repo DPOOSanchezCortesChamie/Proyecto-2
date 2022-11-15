@@ -21,7 +21,7 @@ public class FPrincipal extends JFrame{
 				
 		this.setTitle("Fútbol de Fantasía");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setSize(1000,1000);
+	    this.setSize(1000,600);
 	 	this.setLayout(new BorderLayout());
 		this.pIngresoDatos = new PIngresoDatos(this);
 		this.add(this.pIngresoDatos, BorderLayout.CENTER);
@@ -38,7 +38,7 @@ public class FPrincipal extends JFrame{
 	}
 	
 	public void iniciarAdmin(Admin a) {
-		this.pAdmin = new PAdmin(a);
+		this.pAdmin = new PAdmin(a,this);
 		this.remove(this.pIngresoDatos);
 		this.add(pAdmin, BorderLayout.CENTER);
 		SwingUtilities.updateComponentTreeUI(this);
