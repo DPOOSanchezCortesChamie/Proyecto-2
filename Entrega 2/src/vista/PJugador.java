@@ -13,18 +13,17 @@ import modelo.Participante;
 
 public class PJugador extends JPanel{
 	
-	private ControladorUsuario controlador;
 	private POpcionesUsuario pOpcionesUsuario;
 	private PEquipoUsuario pEquipoUsuario;
 	private FPrincipal principal;
 	
 	public PJugador(Participante p, FPrincipal principal) {
 		this.principal = principal;
-		this.controlador = new ControladorUsuario(p);
+		ControladorUsuario controlador = new ControladorUsuario(p);
 		this.setLayout(new BorderLayout());
-		this.pOpcionesUsuario= new POpcionesUsuario();
+		this.pOpcionesUsuario= new POpcionesUsuario(controlador);
 		this.add(this.pOpcionesUsuario, BorderLayout.NORTH);
-		this.pEquipoUsuario = new PEquipoUsuario();
+		this.pEquipoUsuario = new PEquipoUsuario(controlador);
 		this.add(this.pEquipoUsuario, BorderLayout.WEST);
 		JButton cerrarSesion  = new JButton("Cerrar Sesion");
 		this.add(cerrarSesion,BorderLayout.SOUTH);

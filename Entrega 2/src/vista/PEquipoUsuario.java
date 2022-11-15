@@ -7,12 +7,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controlador.ControladorUsuario;
+
 public class PEquipoUsuario extends JPanel{
-	
-	public PEquipoUsuario() {
+	ControladorUsuario controlador;
+	public PEquipoUsuario(ControladorUsuario controlador) {
 		
 		this.setLayout(new GridLayout(5, 3, 10, 30));
-		
+		this.controlador = controlador;
 		JPanel pDel = new JPanel(new FlowLayout());
 		JPanel pSDel = new JPanel(new FlowLayout());
 		JPanel pMed = new JPanel(new FlowLayout());

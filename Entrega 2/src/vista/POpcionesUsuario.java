@@ -8,6 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controlador.ControladorUsuario;
+
 public class POpcionesUsuario extends JPanel {
 	
 	private JButton btnCrearEquipo;
@@ -15,11 +17,13 @@ public class POpcionesUsuario extends JPanel {
 	private JTextField txtcompraJugador;
 	private JTextField txtventaJugador;
 	private JComboBox<String> seleccionEquipo;
+	private ControladorUsuario controlador;
 	
-	public POpcionesUsuario() {
+	public POpcionesUsuario(ControladorUsuario controlador) {
 		
 		this.setLayout(new FlowLayout());
 		
+		this.controlador = controlador;
 		this.seleccionEquipo = new JComboBox<>();
 		this.seleccionEquipo.addItem("Equipo1");
 		this.seleccionEquipo.addItem("Equipo2");
