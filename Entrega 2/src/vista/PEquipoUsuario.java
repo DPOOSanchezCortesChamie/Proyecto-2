@@ -48,28 +48,28 @@ public class PEquipoUsuario extends JPanel{
 		
 	
 		
-		JButton btnDel1 = new JButton();
-		JButton btnDel2 = new JButton();
+		JButton btnDel1 = new JButton("DEL1");
+		JButton btnDel2 = new JButton("DEL2");
 		
-		JButton btnSDel1 = new JButton();
+		JButton btnSDel1 = new JButton("DEL suplente");
 		
-		JButton btnMed1 = new JButton();
-		JButton btnMed2 = new JButton();
-		JButton btnMed3 = new JButton();
-		JButton btnMed4 = new JButton();
+		JButton btnMed1 = new JButton("MED1");
+		JButton btnMed2 = new JButton("MED2");
+		JButton btnMed3 = new JButton("MED3");
+		JButton btnMed4 = new JButton("MED4");
 		
-		JButton btnSMed1 = new JButton();
+		JButton btnSMed1 = new JButton("MED suplente");
 		
-		JButton btnDef1 = new JButton();
-		JButton btnDef2 = new JButton();
-		JButton btnDef3 = new JButton();
-		JButton btnDef4 = new JButton();
+		JButton btnDef1 = new JButton("DEF1");
+		JButton btnDef2 = new JButton("DEF2");
+		JButton btnDef3 = new JButton("DEF3");
+		JButton btnDef4 = new JButton("DED4");
 		
-		JButton btnSDef1 = new JButton();
+		JButton btnSDef1 = new JButton("DEF suplente");
 		
-		JButton btnPor1 = new JButton();
+		JButton btnPor1 = new JButton("POR1");
 		
-		JButton btnSPor1 = new JButton();
+		JButton btnSPor1 = new JButton("POR suplente");
 		
 		pDel.add(btnDel1);
 		pDel.add(btnDel2);
