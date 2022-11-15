@@ -11,7 +11,7 @@ public class PEquipoUsuario extends JPanel{
 	
 	public PEquipoUsuario() {
 		
-		this.setLayout(new GridLayout(4, 3, 10, 30));
+		this.setLayout(new GridLayout(5, 3, 10, 30));
 		
 		JPanel pDel = new JPanel(new FlowLayout());
 		JPanel pSDel = new JPanel(new FlowLayout());
@@ -22,20 +22,31 @@ public class PEquipoUsuario extends JPanel{
 		JPanel pPor = new JPanel(new FlowLayout());
 		JPanel pSPor = new JPanel(new FlowLayout());
 		
+		JLabel lblPosicion = new JLabel("Posición");
+		JLabel lblTitulares = new JLabel("Titulares");
+		JLabel lblSuplentes = new JLabel("Suplentes");
+		
+		this.add(lblPosicion);
+		this.add(lblTitulares);
+		this.add(lblSuplentes);
+		
+		this.add(new JLabel("DEL"));
 		this.add(pDel);
 		this.add(pSDel);
+		
+		this.add(new JLabel("MED"));	
 		this.add(pMed);
 		this.add(pSMed);
+		
+		this.add(new JLabel("DEF"));	
 		this.add(pDef);
 		this.add(pSDef);
+		
+		this.add(new JLabel("POR"));	
 		this.add(pPor);
 		this.add(pSPor);
 		
-		
-		pDel.add(new JLabel("DEL"));
-		pMed.add(new JLabel("MED"));
-		pDef.add(new JLabel("DEF"));
-		pPor.add(new JLabel("POR"));
+	
 		
 		JButton btnDel1 = new JButton();
 		JButton btnDel2 = new JButton();
