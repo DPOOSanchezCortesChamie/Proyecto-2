@@ -29,8 +29,8 @@ public class PIngresoDatos extends JPanel{
 	
 	private ControladorPrincipal controlador;
 	
-	public PIngresoDatos(FPrincipal main) {		
-		this.controlador = new ControladorPrincipal();
+	public PIngresoDatos(FPrincipal main, ControladorPrincipal c) {		
+		this.controlador = c;
 		this.main = main;
 		this.setLayout(new GridLayout(4, 2, 10, 10));
 		this.setAlignmentX(CENTER_ALIGNMENT);
@@ -67,8 +67,11 @@ public class PIngresoDatos extends JPanel{
 							Participante p = controlador.getUser(txtNombreUsuario.getText(), txtContrasena.getText());
 							if (p==null)
 								mensajeError("Usuario y/o contraseña incorrectos");
-							else 
+							else {
+								txtNombreUsuario.setText(null);
+								txtContrasena.setText(null);
 								main.iniciarUsuario(p);
+							}
 						} else {
 							mensajeError("La contraseña no puede ser nula");
 						}
@@ -81,8 +84,11 @@ public class PIngresoDatos extends JPanel{
 							Admin a = controlador.getAdmin(txtNombreUsuario.getText(), txtContrasena.getText());
 							if (a==null)
 								mensajeError("Usuario y/o contraseña incorrectos");
-							else 
+							else {
+								txtNombreUsuario.setText(null);
+								txtContrasena.setText(null);
 								main.iniciarAdmin(a);
+							}
 						} else {
 							mensajeError("La contraseña no puede ser nula");
 						}

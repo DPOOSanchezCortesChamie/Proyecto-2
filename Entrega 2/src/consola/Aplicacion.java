@@ -42,7 +42,7 @@ public class Aplicacion {
 			System.out.println("Ingrese el nombre de su temporada");
 			nombre = sc.nextLine();
 		}
-		temporadas.put(nombre,adminActual.crearTemporada(nominas,fechas,p));
+		temporadas.put(nombre,adminActual.crearTemporada(nominas,fechas,p, nombre));
 	}
 	
 	private void adminReportarPartido() {

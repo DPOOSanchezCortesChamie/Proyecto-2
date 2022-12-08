@@ -6,14 +6,17 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import controlador.ControladorUsuario;
 
 public class PEquipoUsuario extends JPanel{
 	ControladorUsuario controlador;
 	public PEquipoUsuario(ControladorUsuario controlador) {
-		
-		this.setLayout(new GridLayout(5, 3, 10, 30));
+		this.setLayout(new GridLayout(1,2));
+		JPanel sustituciones = new JPanel();
+		sustituciones.setLayout(new GridLayout(5, 3));
 		this.controlador = controlador;
 		JPanel pDel = new JPanel(new FlowLayout());
 		JPanel pSDel = new JPanel(new FlowLayout());
@@ -28,73 +31,77 @@ public class PEquipoUsuario extends JPanel{
 		JLabel lblTitulares = new JLabel("Titulares");
 		JLabel lblSuplentes = new JLabel("Suplentes");
 		
-		this.add(lblPosicion);
-		this.add(lblTitulares);
-		this.add(lblSuplentes);
+		sustituciones.add(lblPosicion);
+		sustituciones.add(lblTitulares);
+		sustituciones.add(lblSuplentes);
 		
-		this.add(new JLabel("DEL"));
-		this.add(pDel);
-		this.add(pSDel);
+		sustituciones.add(new JLabel("DEL"));
+		sustituciones.add(pDel);
+		sustituciones.add(pSDel);
 		
-		this.add(new JLabel("MED"));	
-		this.add(pMed);
-		this.add(pSMed);
+		sustituciones.add(new JLabel("MED"));	
+		sustituciones.add(pMed);
+		sustituciones.add(pSMed);
 		
-		this.add(new JLabel("DEF"));	
-		this.add(pDef);
-		this.add(pSDef);
+		sustituciones.add(new JLabel("DEF"));	
+		sustituciones.add(pDef);
+		sustituciones.add(pSDef);
 		
-		this.add(new JLabel("POR"));	
-		this.add(pPor);
-		this.add(pSPor);
-		
-	
-		
+		sustituciones.add(new JLabel("POR"));	
+		sustituciones.add(pPor);
+		sustituciones.add(pSPor);
+			
 		JButton btnDel1 = new JButton("DEL1");
 		JButton btnDel2 = new JButton("DEL2");
-		
 		JButton btnSDel1 = new JButton("DEL suplente");
 		
 		JButton btnMed1 = new JButton("MED1");
 		JButton btnMed2 = new JButton("MED2");
 		JButton btnMed3 = new JButton("MED3");
 		JButton btnMed4 = new JButton("MED4");
-		
 		JButton btnSMed1 = new JButton("MED suplente");
 		
 		JButton btnDef1 = new JButton("DEF1");
 		JButton btnDef2 = new JButton("DEF2");
 		JButton btnDef3 = new JButton("DEF3");
 		JButton btnDef4 = new JButton("DED4");
-		
 		JButton btnSDef1 = new JButton("DEF suplente");
 		
 		JButton btnPor1 = new JButton("POR1");
-		
 		JButton btnSPor1 = new JButton("POR suplente");
 		
 		pDel.add(btnDel1);
 		pDel.add(btnDel2);
-		
 		pSDel.add(btnSDel1);
-
 		pMed.add(btnMed1);
 		pMed.add(btnMed2);
 		pMed.add(btnMed3);
 		pMed.add(btnMed4);
-		
 		pSMed.add(btnSMed1);
-		
 		pDef.add(btnDef1);
 		pDef.add(btnDef2);
 		pDef.add(btnDef3);
 		pDef.add(btnDef4);
-		
 		pSDef.add(btnSDef1);	
-		
 		pPor.add(btnPor1);
-		
 		pSPor.add(btnSPor1);
+		
+		this.add(sustituciones);
+		
+		JPanel compraventa = new JPanel();
+		compraventa.setLayout(new GridLayout(7,1));
+		compraventa.add(new JLabel("Compra/Venta"));
+		JButton hacer = new JButton("Hacer transaccion");
+		compraventa.add(hacer);
+		compraventa.add(new JLabel("Comprar"));
+		JTextField comprar = new JTextField();
+		JTextField vender = new JTextField();
+		compraventa.add(comprar);
+		compraventa.add(new JLabel("Vender"));
+		compraventa.add(vender);
+		compraventa.add(new JLabel("Dinero disponible: "));
+		
+		this.add(compraventa);
 	}
 
 }

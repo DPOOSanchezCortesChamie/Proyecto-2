@@ -20,10 +20,13 @@ public class Admin {
 	public List<EquipoFantasia> getMejoresTres() {
 		return temporada.mejoresTresEquipos();
 	}
-	public TemporadaFantasia crearTemporada(String nominas, String partidos, int presupuesto) {
-		temporada = new TemporadaFantasia(presupuesto);
+	public TemporadaFantasia crearTemporada(String nominas, String partidos, int presupuesto, String nombre) {
+		temporada = new TemporadaFantasia(presupuesto, nombre);
 		temporada.crearTemporadaReal(nominas, partidos);
 		return temporada;
+	}
+	public TemporadaFantasia getTemporada() {
+		return this.temporada;
 	}
 	public boolean registrarResultadoPartido(String resultado) {
 		boolean sePudo = temporada.hacerReportePartido(resultado);
@@ -37,11 +40,16 @@ public class Admin {
 			return true;
 		return false;
 	}
-	public void concluirFecha() {
-		temporada.concluirFecha();
-		this.numFecha++;
+	public boolean concluirFecha() {
+		boolean t = temporada.concluirFecha();
+		if (t)
+			this.numFecha++;
+		return t;
 	}
 	private void actualizarDatosTemporada() {
 		temporada.actualizarDatos();
 	}
+	public String getNombreTemporada() {
+		return temporada==null ? "N/A": this.temporada.getNombre();
+	}	
 }

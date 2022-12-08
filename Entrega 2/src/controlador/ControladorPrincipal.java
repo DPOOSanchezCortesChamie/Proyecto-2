@@ -2,7 +2,9 @@ package controlador;
 import java.util.ArrayList;
 
 import modelo.Admin;
+import modelo.Jugador;
 import modelo.Participante;
+import modelo.TemporadaFantasia;
 
 public class ControladorPrincipal {
 	private ArrayList<Admin> admins;
@@ -51,5 +53,16 @@ public class ControladorPrincipal {
 				buscado = admin;
 		}
 		return buscado;
+	}
+	public TemporadaFantasia encontrarTemporada(String nombre) {
+		for (Admin a: admins) {
+			if(a.getNombreTemporada().equals(nombre)){
+				return a.getTemporada();
+			}
+		}
+		return null;
+	}
+	public ArrayList<Jugador> encontrarJugadores(TemporadaFantasia temp, ArrayList<String> jugadores){
+		return temp.encontrarJugadores(jugadores);
 	}
 }

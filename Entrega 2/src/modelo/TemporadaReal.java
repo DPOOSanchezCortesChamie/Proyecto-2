@@ -49,7 +49,9 @@ public class TemporadaReal {
 		}
 		return fechas.get(pos+1);
 	}
-	
+	public Fecha getFecha(int i) {
+		return fechas.get(i);
+	}
 	public int getCantidadFechas() {
 		return fechas.size();
 	}
@@ -57,6 +59,15 @@ public class TemporadaReal {
 		return this.equipos;
 	}
 
-	
-	
+	public ArrayList<Jugador> encontrarJugadores(ArrayList<String> jugadores){
+		ArrayList<Jugador> encontrados = new ArrayList<Jugador>();
+		for(String jugador: jugadores) {
+			for(String e: this.equipos.keySet()) {
+				Jugador xd = equipos.get(e).getJugadores().get(jugador);
+				if (xd != null)
+					encontrados.add(xd);
+			}
+		}
+		return encontrados;
+	}
 }

@@ -35,8 +35,8 @@ public class Fecha {
 		Partido reportable = null;
 		for(Partido partido: partidos) {
 			if(partido.getNombreLocal().equals(nombreLocal) && 
-					partido.getNombreVisitante().equals(nombreVisitante)) {
-				reportable = partido;
+					partido.getNombreVisitante().equals(nombreVisitante) && !partido.isReportado()) {
+					reportable = partido;
 			}
 		}
 		if(reportable != null)
@@ -44,5 +44,20 @@ public class Fecha {
 		else
 			return false;
 		return true;
+	}
+	public String getSiguientePartido() {
+		for (Partido p: this.partidos) {
+			if (!p.isReportado())
+				return p.getNombreLocal() + " - " + p.getNombreVisitante();
+		}
+		return "Ya se jugaron todos los partidos de la temporada";
+	}
+	public boolean fechaTerminada() {
+		boolean t = true;
+		for (Partido p: this.partidos) {
+			if (!p.isReportado())
+				t = false;
+		}
+		return t;
 	}
 }

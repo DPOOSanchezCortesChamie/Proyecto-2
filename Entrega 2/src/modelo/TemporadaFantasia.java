@@ -12,9 +12,11 @@ public class TemporadaFantasia {
 	private Fecha fechaSiguiente;
 	private Fecha fechaActual;
 	private ArrayList<EquipoFantasia> equipos;
+	private String nombre;
 	
-	public TemporadaFantasia(int presupuesto) {
+	public TemporadaFantasia(int presupuesto, String nombre) {
 		this.presupuesto=presupuesto;
+		this.nombre = nombre;
 		this.equipos = new ArrayList<EquipoFantasia>();
 	}
 	
@@ -44,12 +46,23 @@ public class TemporadaFantasia {
 		return this.fechaSiguiente;
 	}
 	
-	public void concluirFecha() {
-		this.fechaActual = this.fechaSiguiente;
-		this.fechaSiguiente = this.temporada.concluirFecha(this.fechaActual);
-		for(EquipoFantasia e: equipos) {
-			e.concluirFecha();
+	public boolean concluirFecha() {
+		if (fechaActual != null) {
+			boolean acabada = fechaActual.fechaTerminada();
+			if (acabada) {
+				this.fechaActual = this.fechaSiguiente;
+				this.fechaSiguiente = this.temporada.concluirFecha(this.fechaActual);
+				for(EquipoFantasia e: equipos) {
+					e.concluirFecha();
+				}
+			}
+			return acabada;
+		} else {
+			this.fechaActual = this.fechaSiguiente;
+			this.fechaSiguiente = temporada.getFecha(2);
+			return true;
 		}
+		
 	}
 	public List<EquipoFantasia> mejoresTresEquipos(){
 		ArrayList<EquipoFantasia> equipos = this.equipos;
@@ -65,5 +78,19 @@ public class TemporadaFantasia {
 		for(EquipoFantasia e: equipos) {
 			e.actualizarPuntos();
 		}
+	}
+	public String getNombre() {
+		return this.nombre;
+	}
+	public int getNumEquipos() {
+		return this.equipos.size();
+	}
+	public String getSiguientePartido() {
+		if (this.fechaActual == null)
+			return "La fecha 0 no tiene partidos";
+		return this.fechaActual.getSiguientePartido();
+	}
+	public ArrayList<Jugador> encontrarJugadores(ArrayList<String> jugadores){
+		return this.temporada.encontrarJugadores(jugadores);
 	}
 }

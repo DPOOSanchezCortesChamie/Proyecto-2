@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.HashMap;
+import java.util.Set;
 import java.util.ArrayList;
 
 public class Participante {
@@ -40,6 +41,9 @@ public class Participante {
 		Equipo equipo = equipos.get(nombreEquipo);
 		HashMap<String,Jugador> jugadores = equipo.getJugadores();
 		return jugadores;
+	}
+	public Set<String> getEquipos() {
+		return equipos.keySet();
 	}
 
 }
