@@ -2,14 +2,11 @@ package vista;
 
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -28,21 +25,36 @@ public class POpcionesUsuario extends JPanel {
 	private JComboBox<String> seleccionEquipo;
 	private ControladorUsuario controlador;
 	private JDialog crearEquipo;
+	private PJugador origin;
 	
-	public POpcionesUsuario(ControladorUsuario controlador) {
+	public POpcionesUsuario(ControladorUsuario controlador, PJugador origin) {
 		
-		ArrayList<String> jugadores = new ArrayList<String>();
-		
+		this.origin = origin;
+			
 		this.setLayout(new FlowLayout());
 		this.crearEquipo = new JDialog();
 		this.crearEquipo.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.crearEquipo.setSize(700,400);
 		this.controlador = controlador;
 		this.seleccionEquipo = new JComboBox<>();
+		this.seleccionEquipo.addItem("");
 		for (String e: controlador.getEquipos()) {
 			this.seleccionEquipo.addItem(e);
 		}
 		this.add(seleccionEquipo);
+		this.seleccionEquipo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String seleccion = seleccionEquipo.getSelectedItem().toString();
+				if(!seleccion.equals("")) {
+					controlador.cambiarEquipo(seleccion);
+					origin.refreshinfo();
+				}
+			}
+			
+		});
 		
 		this.btnCrearEquipo = new JButton("Crear Equipo");
 		this.add(btnCrearEquipo);
@@ -55,10 +67,8 @@ public class POpcionesUsuario extends JPanel {
 		
 		JButton desComp = new JButton("Desempeño comparativo de jugadores");
 		JButton historial = new JButton("Historial de compra y venta de jugadores");
-		JButton mostrarJugadores = new JButton("Mostrar jugadores");
 		this.add(desComp);
 		this.add(historial);
-		this.add(mostrarJugadores);
 		
 		crearEquipo.setLayout(new BorderLayout());
 		JPanel input = new JPanel();
@@ -69,31 +79,12 @@ public class POpcionesUsuario extends JPanel {
 		input.add(new JLabel("Nombre equipo:"));
 		JTextField equName = new JTextField();
 		input.add(equName);
-		input.add(new JLabel("Jugador"));
-		JPanel inputJ = new JPanel();
+		input.add(new JLabel("Jugadores: "));
 		JTextField jName  = new JTextField();
-		JButton confirmar = new JButton("Confirmar");
-		confirmar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(jName.getText().isBlank()) {
-					mensajeError("El campo de jugador no puede estar vacio");
-				} else {
-					jugadores.add(jName.getText());
-					mensajeBasado("Se agrego el jugador " + jName.getText());
-					jName.setText("");
-					
-				}
-			}
-		});
-		inputJ.setLayout(new GridLayout(1,2));
-		inputJ.add(jName);
-		inputJ.add(confirmar);
-		input.add(inputJ);
+		input.add(jName);
 		JPanel iz = new JPanel();
 		iz.setLayout(new BorderLayout());
 		iz.add(input, BorderLayout.CENTER);
-		JPanel fin = new JPanel();
 		crearEquipo.add(iz, BorderLayout.CENTER);
 		
 		JButton create = new JButton("Crear equipo");		
@@ -101,10 +92,19 @@ public class POpcionesUsuario extends JPanel {
 		create.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (tempName.getText()!=""&&equName.getText()!=""&&jugadores.size()==15) {
+				String jugadores[] = jName.getText().split(", ");
+				if (tempName.getText()!=""&&equName.getText()!=""&&jugadores.length==15) {
 					boolean xd = controlador.crearEquipo(tempName.getText(), equName.getText(), jugadores);
 					if(!xd)
-						mensajeError("No se pudo crear la temporada");
+						mensajeError("No se pudo crear el equipo");
+					else {
+						mensajeBasado("Equipo creado");
+						tempName.setText("");
+						equName.setText("");
+						jName.setText("");
+						crearEquipo.setVisible(false);
+						origin.refresh();
+					}
 				} else {
 					mensajeError("No pueden haber valores sin llenar");
 				}

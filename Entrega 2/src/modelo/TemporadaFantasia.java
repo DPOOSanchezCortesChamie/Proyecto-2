@@ -93,4 +93,7 @@ public class TemporadaFantasia {
 	public ArrayList<Jugador> encontrarJugadores(ArrayList<String> jugadores){
 		return this.temporada.encontrarJugadores(jugadores);
 	}
+	public Jugador encontrarJugador(String str) {
+		return this.temporada.encontrarJugador(str);
+	}
 }

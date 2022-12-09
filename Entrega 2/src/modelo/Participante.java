@@ -21,7 +21,7 @@ public class Participante {
 		temporada.asociarEquipo(equipo);
 	}
 	
-	public void venderComprarJugadores(String equipo, Jugador saliente, Jugador entrante) {
+	public void venderComprarJugadores(String equipo, String saliente, String entrante) {
 		equipos.get(equipo).comprarJugador(entrante);
 		equipos.get(equipo).venderJugador(saliente);
 	}

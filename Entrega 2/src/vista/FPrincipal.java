@@ -64,6 +64,12 @@ public class FPrincipal extends JFrame{
 		this.add(pAdmin, BorderLayout.CENTER);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
+	public void reiniciarUser(Participante a) {
+		this.remove(this.pJugador);
+		this.pJugador = new PJugador(a,this,controlador);
+		this.add(pJugador, BorderLayout.CENTER);
+		SwingUtilities.updateComponentTreeUI(this);
+	}
 	
 	public static void main(String[] args) {
 		FPrincipal fPrincipal = new FPrincipal();

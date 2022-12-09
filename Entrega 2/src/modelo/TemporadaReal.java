@@ -64,10 +64,21 @@ public class TemporadaReal {
 		for(String jugador: jugadores) {
 			for(String e: this.equipos.keySet()) {
 				Jugador xd = equipos.get(e).getJugadores().get(jugador);
-				if (xd != null)
+				if (xd != null) {
 					encontrados.add(xd);
+				}
 			}
 		}
 		return encontrados;
+	}
+	public Jugador encontrarJugador(String jugador) {
+		Jugador j = null;
+		for(String e: this.equipos.keySet()) {
+			Jugador xd = equipos.get(e).getJugadores().get(jugador);
+			if (xd != null) {
+				j = xd;
+			}
+		}
+		return j;
 	}
 }

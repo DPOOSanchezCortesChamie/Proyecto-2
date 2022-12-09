@@ -29,7 +29,8 @@ public class EquipoFantasia {
 	public String getNombre() {
 		return this.nombre;
 	}
-	public void comprarJugador(Jugador jugador) {
+	public void comprarJugador(String player) {
+		Jugador jugador = temporada.encontrarJugador(player);
 		jugadores.put(jugador.getNombre(),jugador);
 		monto -= jugador.getPrecio();
 	}
@@ -46,7 +47,8 @@ public class EquipoFantasia {
 		if (proxima != null)
 			proxima.actualizarPuntos();
 	}
-	public void venderJugador(Jugador jugador) {
+	public void venderJugador(String player) {
+		Jugador jugador = temporada.encontrarJugador(player);
 		jugadores.remove(jugador.getNombre());
 		double remuneracion = jugador.getPrecio()*0.97;
 		monto += remuneracion;
@@ -63,5 +65,37 @@ public class EquipoFantasia {
 	public Alineacion designarAlineacion(ArrayList<Jugador> jugadores) {
 		this.proxima = new Alineacion(jugadores, temporada.getFechaSiguiente());
 		return proxima;
+	}
+	public ArrayList<String>  getDelanteros() {
+		ArrayList<String> delanteros = new ArrayList<String>();
+		for(String jugador: this.jugadores.keySet()) {
+			if(this.jugadores.get(jugador).darTipo().equals("Delantero"))
+				delanteros.add(jugador);
+		}
+		return delanteros;
+	}
+	public ArrayList<String>  getMedCampistas() {
+		ArrayList<String> delanteros = new ArrayList<String>();
+		for(String jugador: this.jugadores.keySet()) {
+			if(this.jugadores.get(jugador).darTipo().equals("Mediocampista"))
+				delanteros.add(jugador);
+		}
+		return delanteros;
+	}
+	public ArrayList<String> getDefensas() {
+		ArrayList<String> delanteros = new ArrayList<String>();
+		for(String jugador: this.jugadores.keySet()) {
+			if(this.jugadores.get(jugador).darTipo().equals("Defensa"))
+				delanteros.add(jugador);
+		}
+		return delanteros;
+	}
+	public ArrayList<String> getArqueros() {
+		ArrayList<String> delanteros = new ArrayList<String>();
+		for(String jugador: this.jugadores.keySet()) {
+			if(this.jugadores.get(jugador).darTipo().equals("Arquero"))
+				delanteros.add(jugador);
+		}
+		return delanteros;
 	}
 }

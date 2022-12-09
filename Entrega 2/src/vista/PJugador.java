@@ -17,15 +17,18 @@ public class PJugador extends JPanel{
 	private POpcionesUsuario pOpcionesUsuario;
 	private PEquipoUsuario pEquipoUsuario;
 	private FPrincipal principal;
+	private Participante p;
+	private ControladorUsuario controlador;
 	
 	public PJugador(Participante p, FPrincipal principal, ControladorPrincipal c) {
+		this.p = p;
 		this.principal = principal;
-		ControladorUsuario controlador = new ControladorUsuario(p,c);
+		this.controlador = new ControladorUsuario(p,c);
 		this.setLayout(new BorderLayout());
-		this.pOpcionesUsuario= new POpcionesUsuario(controlador);
+		this.pOpcionesUsuario= new POpcionesUsuario(controlador, this);
 		this.add(this.pOpcionesUsuario, BorderLayout.NORTH);
 		
-		this.pEquipoUsuario = new PEquipoUsuario(controlador);
+		this.pEquipoUsuario = new PEquipoUsuario(controlador, this);
 		this.add(this.pEquipoUsuario, BorderLayout.CENTER);
 		
 		
@@ -38,5 +41,15 @@ public class PJugador extends JPanel{
 			}
 		});
 	}	
+	public void refresh() {
+		principal.reiniciarUser(this.p);
+	}
+	public void refreshinfo() {
+		this.setVisible(false);
+		this.remove(pEquipoUsuario);
+		this.pEquipoUsuario = new PEquipoUsuario(controlador, this);
+		this.add(pEquipoUsuario, BorderLayout.CENTER);
+		this.setVisible(true);
+	}
 }
 
